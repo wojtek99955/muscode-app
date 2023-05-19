@@ -136,7 +136,7 @@ const isTodoHovered = ref(false);
   position: absolute;
   left: 0;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
-  padding: 10px;
+  padding: 8px;
   display: inline-block;
   position: relative;
   vertical-align: middle;
@@ -144,15 +144,19 @@ const isTodoHovered = ref(false);
   margin-right: 5px;
 }
 
+.checkbox-label:hover::before {
+  background-color: #e8e8e8;
+}
+
+.checkbox-label:active::before {
+  background-color: #d0d0d0;
+}
+
 .checkbox:checked + .checkbox-label::before {
   background-image: url("/assets/check.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-color: #862583;
-}
-
-.checkbox:checked + .checkbox-label::before {
-  fill: red;
 }
 
 li {
