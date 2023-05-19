@@ -27,18 +27,4 @@ const { isLoading, isError, data, error } = useQuery({
   </template>
 </template>
 
-<style scoped>
-.ribbon {
-  width: 200px;
-  padding: 4px;
-  position: absolute;
-  text-align: center;
-  color: #f0f0f0;
-  top: 35px;
-  right: -50px;
-  background-color: black;
-  transform: rotate(45deg);
-  text-align: center;
-  font-weight: 500;
-}
-</style>
+<style scoped></style>
