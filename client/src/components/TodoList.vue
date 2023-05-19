@@ -2,7 +2,7 @@
 import { ref, watchEffect } from "vue";
 import { Icon } from "@iconify/vue";
 import { useQueryClient, useQuery, useMutation } from "@tanstack/vue-query";
-
+import Todo from "./Todo.vue";
 const queryClient = useQueryClient();
 const todoText = ref("");
 const doneNumber = ref(0);
@@ -47,49 +47,6 @@ const handleAddTodo = async () => {
   }
   todoText.value = "";
 };
-
-const updateTodo = useMutation(
-  (todo) =>
-    fetch("https://muscode-app-server.onrender.com/todos", {
-      method: "PATCH",
-      body: JSON.stringify(todo),
-      headers: {
-        "Content-type": "application/json",
-      },
-    }),
-  {
-    onSuccess: () => {
-      queryClient.invalidateQueries("todos");
-    },
-  }
-);
-const handleMutate = (id, isDone) => {
-  if (isDone) {
-    updateTodo.mutate({ id, isDone: false });
-  } else {
-    updateTodo.mutate({ id, isDone: true });
-  }
-};
-
-const deleteTodo = useMutation(
-  (id) =>
-    fetch("https://muscode-app-server.onrender.com/todos", {
-      method: "DELETE",
-      body: JSON.stringify(id),
-      headers: {
-        "Content-type": "application/json",
-      },
-    }),
-  {
-    onSuccess: () => {
-      queryClient.invalidateQueries(["todos"]);
-    },
-  }
-);
-
-const handleDeleteTodo = (id) => {
-  deleteTodo.mutate({ id });
-};
 </script>
 
 <template>
@@ -102,21 +59,12 @@ const handleDeleteTodo = (id) => {
     <span v-else-if="isError">Error: {{ error.message }}</span>
     <ul v-else-if="data">
       <template v-for="{ text, _id, isDone } in data" :key:_id>
-        <li>
-          <div class="checkbox-wrapper">
-            <input type="checkbox" class="checkbox" :id="_id" @change="handleMutate(_id, isDone)" :checked="isDone" />
-            <label :for="_id" class="checkbox-label">
-              {{ text }}
-            </label>
-          </div>
-          <button @click="handleDeleteTodo(_id)">delete</button>
-          <hr class="divider" />
-        </li>
+        <Todo :text="text" :id="_id" :isDone="isDone" />
       </template>
     </ul>
     <div class="input-container">
       <label for="todo">
-        <Icon icon="material-symbols:add" width="20" color="#384a5c" />
+        <Icon icon="material-symbols:add" width="20" color="#b2b2b2" />
       </label>
       <input
         v-model="todoText"
@@ -144,10 +92,6 @@ h2 {
   font-weight: 600;
 }
 
-.checkbox {
-  opacity: 0;
-}
-
 .divider {
   margin: 0.5rem 0;
   height: 1px;
@@ -156,67 +100,17 @@ h2 {
   width: 100%;
 }
 
-.checkbox-wrapper {
-  display: flex;
-  align-items: center;
-  position: relative;
-  padding-left: 0.5rem;
-}
-
-.check-mark {
-  left: 0.2rem;
-  width: 1.5rem;
-  height: 1.5rem;
-  position: absolute;
-  vertical-align: middle;
-  display: none;
-  top: -0.1rem;
-  left: 0.5rem;
-}
-
-.checkbox-label {
-  position: absolute;
-}
-
-.checkbox:checked + .checkbox-label {
-  background-image: url("/assets/check.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-.checkbox-label::before {
-  content: "";
-  background-color: transparent;
-  border: 1px solid #b2b2b2;
-  border-radius: 50%;
-  position: absolute;
-  left: 0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05);
-  padding: 10px;
-  display: inline-block;
-  position: relative;
-  vertical-align: middle;
+.iconify--material-symbols {
   cursor: pointer;
-  margin-right: 5px;
-}
-
-.checkbox:checked + .checkbox-label::before {
-  background-image: url("/assets/check.svg");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: #862583;
-}
-
-.checkbox:checked + .checkbox-label::before {
-  fill: red;
+  position: absolute;
+  left: 0.5rem;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
 }
 
 ul {
   list-style: none;
-}
-
-li {
-  color: #384a5c;
 }
 
 input {
@@ -226,6 +120,7 @@ input {
   font-size: 1rem;
   color: #384a5c;
   outline: none;
+  margin-left: 1rem;
 }
 
 .input-container {
@@ -233,6 +128,11 @@ input {
   align-items: center;
   gap: 0.5rem;
   padding-left: 0.5rem;
+  position: relative;
+}
+
+input::placeholder {
+  color: #b2b2b2;
 }
 .top-section {
   display: flex;
