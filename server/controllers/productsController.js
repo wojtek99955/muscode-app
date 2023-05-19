@@ -22,4 +22,4 @@ const updateProduct = async (req, res) => {
   res.json(` Product with ID '${product._id}' updated`);
 };
 
-module.exports = { createProduct, getProducts, updateProduct };
+module.exports = { getProducts, updateProduct };
