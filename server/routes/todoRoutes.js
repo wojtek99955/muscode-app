@@ -7,5 +7,6 @@ router
   .get(todosController.getTodos)
   .post(todosController.createTodo)
   .patch(todosController.updateTodo)
+  .delete(todosController.deleteTodo);
 
-  module.exports = router;
+module.exports = router;

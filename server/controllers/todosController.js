@@ -24,8 +24,6 @@ const createTodo = async (req, res) => {
 const updateTodo = async (req, res) => {
   const { id, isDone } = req.body;
 
-  console.log(isDone);
-
   const todo = await Todo.findById(id).exec();
 
   todo.isDone = isDone;
@@ -35,4 +33,24 @@ const updateTodo = async (req, res) => {
   res.json(` Todo with ID '${todo._id}' updated`);
 };
 
-module.exports = { createTodo, updateTodo, getTodos };
+const deleteTodo = async (req, res) => {
+  const { id } = req.body;
+
+  if (!id) {
+    return res.status(400).json({ message: "Tdo ID required" });
+  }
+
+  const todo = await Todo.findById(id).exec();
+
+  if (!todo) {
+    return res.status(400).json({ message: "Todo not found" });
+  }
+
+  const result = await todo.deleteOne();
+
+  const reply = `Todo with ID ${result._id} deleted`;
+
+  res.json(reply);
+};
+
+module.exports = { createTodo, updateTodo, getTodos, deleteTodo };
