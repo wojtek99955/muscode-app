@@ -70,6 +70,26 @@ const handleMutate = (id, isDone) => {
     updateTodo.mutate({ id, isDone: true });
   }
 };
+
+const deleteTodo = useMutation(
+  (id) =>
+    fetch("https://muscode-app-server.onrender.com/todos", {
+      method: "DELETE",
+      body: JSON.stringify(id),
+      headers: {
+        "Content-type": "application/json",
+      },
+    }),
+  {
+    onSuccess: () => {
+      queryClient.invalidateQueries(["todos"]);
+    },
+  }
+);
+
+const handleDeleteTodo = (id) => {
+  deleteTodo.mutate(id);
+};
 </script>
 
 <template>
@@ -89,6 +109,7 @@ const handleMutate = (id, isDone) => {
               {{ text }}
             </label>
           </div>
+          <button @click="handleDeleteTodo(_id)">delete</button>
           <hr class="divider" />
         </li>
       </template>
@@ -184,6 +205,10 @@ h2 {
   background-repeat: no-repeat;
   background-size: contain;
   background-color: #862583;
+}
+
+.checkbox:checked + .checkbox-label::before {
+  fill: red;
 }
 
 ul {
