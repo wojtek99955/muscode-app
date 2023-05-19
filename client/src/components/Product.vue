@@ -43,7 +43,7 @@ const handleOpenModal = () => {
 <style>
 .card {
   background-color: white;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   width: 100%;
@@ -82,11 +82,7 @@ h3 {
   font-size: 1.2rem;
   font-weight: 500;
 }
-.price {
-  text-decoration: line-through;
-  margin-bottom: 0.3rem;
-  text-align: center;
-}
+
 .noDiscount {
   margin-bottom: 0.3rem;
   text-align: center;
@@ -104,6 +100,7 @@ h3 {
   text-align: center;
   color: #862583;
   font-weight: 600;
+  font-size: 1.1rem;
 }
 section {
   background-color: #f5f8fa;

@@ -38,7 +38,7 @@ const { isLoading, isError, data, error } = useQuery({
 <style scoped>
 .container {
   background-color: white;
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 10px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   grid-column: 2/4;
