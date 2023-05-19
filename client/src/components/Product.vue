@@ -80,7 +80,7 @@ h3 {
   align-self: flex-start;
   margin-bottom: 1rem;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 .price {
   text-decoration: line-through;

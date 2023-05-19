@@ -18,6 +18,8 @@ import Product from "./components/ProductList.vue";
 <style scoped>
 h1 {
   margin-bottom: 2rem;
+  font-size: 2rem;
+  font-weight: 500;
 }
 
 main {

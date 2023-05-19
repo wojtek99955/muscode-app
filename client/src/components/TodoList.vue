@@ -89,7 +89,7 @@ const handleAddTodo = async () => {
 h2 {
   margin-bottom: 2rem;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .divider {

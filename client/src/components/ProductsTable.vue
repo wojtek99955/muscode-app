@@ -47,7 +47,7 @@ const { isLoading, isError, data, error } = useQuery({
 h2 {
   margin-bottom: 2rem;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 table {
@@ -62,6 +62,10 @@ td {
   padding: 0.5rem;
   font-size: 1rem;
   color: #384a5c;
+}
+
+th {
+  font-weight: 500;
 }
 
 tr {
