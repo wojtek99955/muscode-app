@@ -120,13 +120,15 @@ hr {
 h1 {
   padding: 1rem;
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
 }
 select {
   width: 100%;
   border: none;
   border-bottom: 1px solid #b2b2b2;
   outline: none;
+  color: #384a5c;
+  padding: 0.2rem 0;
 }
 .img-wrapper {
   border-radius: 50%;
@@ -157,7 +159,7 @@ p {
 }
 label {
   display: block;
-  margin: 0.8rem 0;
+  margin: 0.5rem 0;
   color: #a9a3a3;
   font-weight: 400;
   font-size: 1rem;
@@ -172,6 +174,8 @@ input {
   outline: none;
   color: #384a5c;
   font-size: 1rem;
+  padding: 0.2rem;
+  margin-bottom: 0.3rem;
 }
 .bottom-section {
   border-top: 1px solid grey;
@@ -180,7 +184,7 @@ input {
   position: absolute;
   width: 100%;
   bottom: 0;
-  padding: 0.5rem 1rem;
+  padding: 1rem;
 }
 .save {
   background-color: #862583;
