@@ -88,7 +88,7 @@ const deleteTodo = useMutation(
 );
 
 const handleDeleteTodo = (id) => {
-  deleteTodo.mutate(id);
+  deleteTodo.mutate({ id });
 };
 </script>
 
