@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, reactive, ref } from "vue";
+import { defineProps, reactive, ref, watch, watchEffect, onMounted } from "vue";
 import { useQueryClient, useMutation } from "@tanstack/vue-query";
 const props = defineProps({
   name: String,
@@ -48,11 +48,26 @@ const handleSubmit = async () => {
     if (mutation.isSuccess) emit("close");
   }
 };
+
+const backgroundRef = ref(null);
+watch((backgroundRef) => {
+  if (backgroundRef) console.log(backgroundRef.value);
+});
+
+const clickoutside = (e) => {
+  emit("close");
+};
 </script>
 
 <template>
-  <div class="modal-background">
-    <div class="container">
+  <div class="modal-background" ref="backgroundRef" @click="clickoutside">
+    <div
+      class="container"
+      @click="
+        (e) => {
+          e.stopPropagation();
+        }
+      ">
       <div class="top-section">
         <h1>Edycja produktu: {{ name }}</h1>
         <hr />
