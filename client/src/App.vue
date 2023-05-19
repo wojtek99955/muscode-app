@@ -21,15 +21,24 @@ h1 {
 }
 
 main {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 1rem;
-  width: 1180px;
+}
+
+@media (min-width: 900px) {
+  main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 1rem;
+    width: 100%;
+  }
 }
 
 section {
-  background-color: #f5f8fa;
-  width: 100%;
+  width: 1180px;
+  margin: auto;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
