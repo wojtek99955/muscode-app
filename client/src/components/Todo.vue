@@ -120,6 +120,7 @@ const isTodoHovered = ref(false);
 
 .checkbox-label {
   position: absolute;
+  width: 100%;
 }
 
 .checkbox:checked + .checkbox-label {
