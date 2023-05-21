@@ -56,7 +56,7 @@ const isTodoHovered = ref(false);
     <div class="content-wrapper">
       <div class="checkbox-wrapper">
         <input type="checkbox" class="checkbox" :id="id" @change="handleMutate(id, isDone)" :checked="isDone" />
-        <label :for="id" class="checkbox-label">
+        <label :for="id" class="checkbox-label" :class="isDone && 'isDone'">
           {{ text }}
         </label>
       </div>
@@ -92,6 +92,10 @@ const isTodoHovered = ref(false);
 .content-wrapper {
   display: flex;
   align-items: center;
+}
+
+.isDone {
+  text-decoration: line-through;
 }
 
 .content-wrapper {
