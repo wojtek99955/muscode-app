@@ -86,13 +86,7 @@ const clickoutside = (e) => {
         </div>
         <div class="input-container">
           <label for="specialPrice">Promocyjna cena</label>
-          <input
-            type="number"
-            name=""
-            id="specialPrice"
-            v-model="values.specialPrice"
-            :placeholder="specialPrice"
-            required />
+          <input type="number" name="" id="specialPrice" v-model="values.specialPrice" :placeholder="specialPrice" />
         </div>
         <div class="input-container">
           <label for="currency">Waluta</label>
