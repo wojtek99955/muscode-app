@@ -26,6 +26,7 @@ main {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  width: 100%;
 }
 
 @media (min-width: 900px) {
@@ -34,17 +35,15 @@ main {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 1fr 1fr;
     gap: 1rem;
-    width: 100%;
   }
 }
 
 section {
-  width: 1180px;
+  max-width: 1180px;
   margin: auto;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem;
 }
 </style>
