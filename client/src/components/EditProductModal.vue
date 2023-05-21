@@ -37,16 +37,14 @@ const mutation = useMutation({
   },
 });
 const handleSubmit = async () => {
-  if (values.name && values.price && values.specialPrice) {
-    await mutation.mutateAsync({
-      name: values.name,
-      id: values.id,
-      specialPrice: +values.specialPrice,
-      price: +values.price,
-      currency: selectedCurrency.value,
-    });
-    if (mutation.isSuccess) emit("close");
-  }
+  await mutation.mutateAsync({
+    name: values.name,
+    id: values.id,
+    specialPrice: +values.specialPrice,
+    price: +values.price,
+    currency: selectedCurrency.value,
+  });
+  if (mutation.isSuccess) emit("close");
 };
 
 const backgroundRef = ref(null);
