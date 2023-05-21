@@ -40,7 +40,7 @@ const handleSubmit = async () => {
   await mutation.mutateAsync({
     name: values.name,
     id: values.id,
-    specialPrice: values.specialPrice === 0 && null,
+    specialPrice: values.specialPrice === 0 ? null : values.specialPrice,
     price: +values.price,
     currency: selectedCurrency.value,
   });
